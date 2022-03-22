@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-image: url(../img/divisionPages.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.carrito{
+    background-color: hsl(0, 0%, 100%, 70%);
+    backdrop-filter: blur(50px);
+    height: auto;
+    padding: 10px;
+}
+
+.list-group-item{
+    background-color: hsl(0, 0%, 100%, 50%);
+}
+
+.card{
+    background-color: hsl(0, 0%, 100%, 70%);
+    backdrop-filter: blur(50px);
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+.cardPrecio{
+    display: none;
+}
