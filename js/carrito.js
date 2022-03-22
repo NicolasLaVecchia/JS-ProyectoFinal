@@ -7,73 +7,73 @@ const baseDeDatosProductos = [
         id: 1,
         nombre: 'Señalador MrDarcy',
         precio: 150,
-        imagen: '/img/mrdarcy.jpg'
+        imagen: '../img/mrdarcy.jpg'
     },
     {
         id: 2,
         nombre: 'Señalador Elizabeth',
         precio: 150,
-        imagen: '/img/elizabeth.jpg'
+        imagen: '../img/elizabeth.jpg'
     },
     {
         id: 3,
         nombre: 'World Cup-20cm',
         precio: 2750,
-        imagen: '/img/copaDelMundo.jpg'
+        imagen: '../img/copaDelMundo.jpg'
     },
     {
         id: 4,
         nombre: 'Libertadores-20cm',
         precio: 2100,
-        imagen: '/img/libertadores.jpg'
+        imagen: '../img/libertadores.jpg'
     },
     {
         id: 5,
         nombre: 'Lib. Boca-20cm',
         precio: 2500,
-        imagen: '/img/libertadoresBoca.jpg'
+        imagen: '../img/libertadoresBoca.jpg'
     },
     {
         id: 6,
         nombre: 'BustoDeadPool-15cm',
         precio: 3900,
-        imagen: '/img/bustoDeadpool.jpg'
+        imagen: '../img/bustoDeadpool.jpg'
     },
     {
         id: 7,
         nombre: 'FiguraExpo #1 -10cm',
         precio: 420,
-        imagen: '/img/figura1.jpg'
+        imagen: '../img/figura1.jpg'
     },
     {
         id: 8,
         nombre: 'FiguraExpo #2 -10cm',
         precio: 410,
-        imagen: '/img/figura2.jpg'
+        imagen: '../img/figura2.jpg'
     },
     {
         id: 9,
         nombre: 'Grinder Minecraft',
         precio: 2500,
-        imagen: '/img/grinderMinecraft.jpg'
+        imagen: '../img/grinderMinecraft.jpg'
     },
     {
         id: 10,
         nombre: 'Lapicero David - 10cm',
         precio: 1600,
-        imagen: '/img/lapiceroDavid.jpg'
+        imagen: '../img/lapiceroDavid.jpg'
     },
     {
         id: 11,
         nombre: 'Maceta Groot - 15cm',
         precio: 2800,
-        imagen: '/img/macetaGroot.jpg'
+        imagen: '../img/macetaGroot.jpg'
     },
     {
         id: 12,
         nombre: 'Maceta Sonriente - 10cm',
         precio: 2700,
-        imagen: '/img/macetaCarita.jpg'
+        imagen: '../img/macetaCarita.jpg'
     },
 
 ];
