@@ -84,7 +84,7 @@ const flowItems = document.querySelector('#items');
 const flowCarrito = document.querySelector('#carrito');
 const flowTotal = document.querySelector('#total');
 const flowBotonVaciar = document.querySelector('#boton-vaciar');
-//const flowBotonComprar = document.querySelector('#boton-comprar');
+const flowBotonComprar = document.querySelector('#boton-comprar');
 const miLocalStorage = window.localStorage;
 
 // Funciones
@@ -132,6 +132,16 @@ function renderizarProductos() {
 function agregarProductoAlCarrito(producto) {
     // Agregamos el push al carrito
     carrito.push(producto.target.getAttribute('marcador'))
+    // Se agrega el toastify
+    Toastify({
+        text: "Producto agregado al carrito",
+        duration: 800,
+        style: {
+            background: "linear-gradient(to right, #FFB2A4, #CD8A96)",
+            color: "white",
+        }
+    }).showToast();
+
     // Actualizamos el carrito 
     renderizarCarrito();
     // Actualizamos el LocalStorage
@@ -208,12 +218,45 @@ function calcularTotal() {
 
 // Vacia el carrito y lo vuelve a renderiza
 function vaciarCarrito() {
-    // Se limpian los productos guardados
-    carrito = [];
-    // Aca se renderiza de nuevo
-    renderizarCarrito();
-    // Borra LocalStorage
-    localStorage.clear();
+
+    Swal.fire({
+        title: '¿Seguro que quiere vaciar el carrito?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        denyButtonText: 'No',
+        customClass: {
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+        },
+        allowOutsideClick: () => {
+            const popup = Swal.getPopup()
+            popup.classList.remove('swal2-show')
+            setTimeout(() => {
+                popup.classList.add('animate__animated', 'animate__headShake')
+            })
+            setTimeout(() => {
+                popup.classList.remove('animate__animated', 'animate__headShake')
+            }, 500)
+            return false
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Carrito vaciado', '', 'success')
+            // Se limpian los productos guardados
+            carrito = [];
+            // Aca se renderiza de nuevo
+            renderizarCarrito();
+            // Borra LocalStorage
+            localStorage.clear();
+        } else if (result.isDenied) {
+            Swal.fire('Carrito sin modificaciones', '', 'error')
+            // Aca se renderiza de nuevo
+            renderizarCarrito();
+        }
+    })
 }
 
 // Se guarda el carrito en el LocalStorage
@@ -231,6 +274,88 @@ function cargarCarritoDeLocalStorage() {
 
 // Eventos
 flowBotonVaciar.addEventListener('click', vaciarCarrito);
+
+flowBotonComprar.addEventListener('click', () => {
+
+    Swal.fire({
+        title: '¿Tienes una cuenta creada?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        denyButtonText: 'No',
+        customClass: {
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+        },
+        allowOutsideClick: () => {
+            const popup = Swal.getPopup()
+            popup.classList.remove('swal2-show')
+            setTimeout(() => {
+                popup.classList.add('animate__animated', 'animate__headShake')
+            })
+            setTimeout(() => {
+                popup.classList.remove('animate__animated', 'animate__headShake')
+            }, 500)
+            return false
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Perfecto, ingresa tu cuenta',
+                html: `<input type="text" id="login" class="swal2-input" placeholder="Correo Electronico">
+                <input type="password" id="password" class="swal2-input" placeholder="Contraseña">`,
+                confirmButtonText: 'Sign in',
+                focusConfirm: false,
+                customClass: "Login",
+                preConfirm: () => {
+                    const login = Swal.getPopup().querySelector('#login').value
+                    const password = Swal.getPopup().querySelector('#password').value
+                    if (!login || !password) {
+                        Swal.showValidationMessage(`Please enter login and password`)
+                    }
+                    return { login: login, password: password }
+                },
+                allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                }
+            }).then((result) => {
+                Swal.fire(`
+                Login: ${result.value.login}
+                Password: ${result.value.password}
+                `.trim())
+            })
+        } else if (result.isDenied) {
+            Swal.fire({
+                title: 'Create Una',
+                icon: 'warning',
+                confirmButtonText: '<a class="sweetLogin" style="color: white" href="./login.html"> Alla voy! </a>',
+                allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                        popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                        popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                }
+            })
+        }
+    })
+
+})
 
 // Inicio
 cargarCarritoDeLocalStorage();
