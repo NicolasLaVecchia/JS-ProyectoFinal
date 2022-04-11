@@ -1,222 +1,105 @@
-// Comienza la seccion del carrito
+const cards = document.getElementById('cards')
+const items = document.getElementById('items')
+const footer = document.getElementById('footer')
+const templateCard = document.getElementById('template-card').content
+const templateFooter = document.getElementById('template-footer').content
+const templateCarrito = document.getElementById('template-carrito').content
+const fragment = document.createDocumentFragment()
+let carrito = {}
 
-// Variables, se suben los productos que va a vender el emprendimiento
+// Eventos
+// El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
+document.addEventListener('DOMContentLoaded', e => {
+    fetchData()
+    if (localStorage.getItem('carrito') !== null) {
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        pintarCarrito()
+    }
+});
+cards.addEventListener('click', e => { addCarrito(e) });
+items.addEventListener('click', e => { btnAumentarDisminuir(e) })
 
-const baseDeDatosProductos = [
-    {
-        id: 1,
-        nombre: 'Señalador MrDarcy',
-        precio: 150,
-        imagen: '../img/mrdarcy.jpg'
-    },
-    {
-        id: 2,
-        nombre: 'Señalador Elizabeth',
-        precio: 150,
-        imagen: '../img/elizabeth.jpg'
-    },
-    {
-        id: 3,
-        nombre: 'World Cup-20cm',
-        precio: 2750,
-        imagen: '../img/copaDelMundo.jpg'
-    },
-    {
-        id: 4,
-        nombre: 'Libertadores-20cm',
-        precio: 2100,
-        imagen: '../img/libertadores.jpg'
-    },
-    {
-        id: 5,
-        nombre: 'Lib. Boca-20cm',
-        precio: 2500,
-        imagen: '../img/libertadoresBoca.jpg'
-    },
-    {
-        id: 6,
-        nombre: 'BustoDeadPool-15cm',
-        precio: 3900,
-        imagen: '../img/bustoDeadpool.jpg'
-    },
-    {
-        id: 7,
-        nombre: 'FiguraExpo #1 -10cm',
-        precio: 420,
-        imagen: '../img/figura1.jpg'
-    },
-    {
-        id: 8,
-        nombre: 'FiguraExpo #2 -10cm',
-        precio: 410,
-        imagen: '../img/figura2.jpg'
-    },
-    {
-        id: 9,
-        nombre: 'Grinder Minecraft',
-        precio: 2500,
-        imagen: '../img/grinderMinecraft.jpg'
-    },
-    {
-        id: 10,
-        nombre: 'Lapicero David - 10cm',
-        precio: 1600,
-        imagen: '../img/lapiceroDavid.jpg'
-    },
-    {
-        id: 11,
-        nombre: 'Maceta Groot - 15cm',
-        precio: 2800,
-        imagen: '../img/macetaGroot.jpg'
-    },
-    {
-        id: 12,
-        nombre: 'Maceta Sonriente - 10cm',
-        precio: 2700,
-        imagen: '../img/macetaCarita.jpg'
-    },
-
-];
-
-let carrito = [];
-const divisa = '$';
-const flowItems = document.querySelector('#items');
-const flowCarrito = document.querySelector('#carrito');
-const flowTotal = document.querySelector('#total');
-const flowBotonVaciar = document.querySelector('#boton-vaciar');
-const flowBotonComprar = document.querySelector('#boton-comprar');
-const miLocalStorage = window.localStorage;
-
-// Funciones
-
-// Se dibujan los productos a partir de lo que esta cargado en la base de datos
-
-function renderizarProductos() {
-    baseDeDatosProductos.forEach((info) => {
-        // Estructura
-        const card = document.createElement('div');
-        card.classList.add('card', 'col-sm-3');
-        // Body
-        const cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-        // Titulo
-        const cardTitle = document.createElement('h5');
-        cardTitle.classList.add('card-title');
-        cardTitle.textContent = info.nombre;
-        // Imagen
-        const cardImg = document.createElement('img');
-        cardImg.classList.add('img-fluid');
-        cardImg.setAttribute('src', info.imagen);
-        // Precio
-        const cardPrecio = document.createElement('p');
-        cardPrecio.classList.add('card-text');
-        cardPrecio.textContent = `${divisa}${info.precio}`;
-        // Boton 
-        const cardBoton = document.createElement('button');
-        cardBoton.classList.add('btn', 'btn-secondary');
-        cardBoton.textContent = 'Agregar';
-        cardBoton.setAttribute('marcador', info.id);
-        cardBoton.addEventListener('click', agregarProductoAlCarrito);
-        // Se agregan con append
-        cardBody.appendChild(cardImg);
-        cardBody.appendChild(cardTitle);
-        cardBody.appendChild(cardPrecio);
-        cardBody.appendChild(cardBoton);
-        card.appendChild(cardBody);
-        flowItems.appendChild(card);
-    });
+// Traer productos
+const fetchData = async () => {
+    const res = await fetch('../js/api.json');
+    const data = await res.json()
+    // console.log(data)
+    pintarCards(data)
 }
 
-// Evento para agregar un producto al carrito de compra
-
-function agregarProductoAlCarrito(producto) {
-    // Agregamos el push al carrito
-    carrito.push(producto.target.getAttribute('marcador'))
-    // Se agrega el toastify
-    Toastify({
-        text: "Producto agregado al carrito",
-        duration: 800,
-        style: {
-            background: "linear-gradient(to right, #FFB2A4, #CD8A96)",
-            color: "white",
-        }
-    }).showToast();
-
-    // Actualizamos el carrito 
-    renderizarCarrito();
-    // Actualizamos el LocalStorage
-    guardarCarritoEnLocalStorage();
+// Pintar productos
+const pintarCards = data => {
+    data.forEach(item => {
+        templateCard.querySelector('h5').textContent = item.title
+        templateCard.querySelector('p').textContent = item.precio
+        templateCard.querySelector('img').setAttribute("src", item.thumbnail)
+        templateCard.querySelector('button').dataset.id = item.id
+        const clone = templateCard.cloneNode(true)
+        fragment.appendChild(clone)
+    })
+    cards.appendChild(fragment)
 }
 
-// Se dibujan los productos que se seleccionan en el carrito 
-
-function renderizarCarrito() {
-    // Se vacia todo el html
-    flowCarrito.textContent = '';
-    // Se sacan los posibles duplicados
-    const carritoSinDuplicados = [...new Set(carrito)];
-    // Se generan las entradas a partir del carrito
-    carritoSinDuplicados.forEach((item) => {
-        // Se obtiene el item que necesitamos de la variable base de datos
-        const miItem = baseDeDatosProductos.filter((itemBaseDatosProductos) => {
-            // Se fija si coinciden los ID
-            return itemBaseDatosProductos.id === parseInt(item);
-        });
-        // Cuenta el número de veces que se repite el producto
-        const numeroUnidadesItem = carrito.reduce((total, itemId) => {
-            // Si las ID coinciden se incrementa el contador, en caso contrario no se mantiene
-            return itemId === item ? total += 1 : total;
-        }, 0);
-        // Se crea la lista de producto seleccionado en el carrito
-        const productoCargado = document.createElement('li');
-        productoCargado.classList.add('list-group-item', 'text-right', 'mx-2');
-        productoCargado.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${divisa}${miItem[0].precio}`;
-        // Boton de borrar Item
-        const botonQuitar = document.createElement('button');
-        botonQuitar.classList.add('btn', 'btn-danger', 'mx-5');
-        botonQuitar.textContent = 'X';
-        botonQuitar.style.marginLeft = '1rem';
-        botonQuitar.dataset.item = item;
-        botonQuitar.addEventListener('click', borrarItemCarrito);
-        // Se mezcla
-        productoCargado.appendChild(botonQuitar);
-        flowCarrito.appendChild(productoCargado);
-    });
-    // Renderizamos el precio total en el HTML
-    flowTotal.textContent = calcularTotal();
+// Agregar al carrito
+const addCarrito = e => {
+    if (e.target.classList.contains('btn-dark')) {
+        // console.log(e.target.dataset.id)
+        // console.log(e.target.parentElement)
+        setCarrito(e.target.parentElement)
+        // Se agrega el toastify
+        Toastify({
+            text: "Producto agregado al carrito",
+            duration: 800,
+            style: {
+                background: "linear-gradient(to right, #FFB2A4, #CD8A96)",
+                color: "white",
+            }
+        }).showToast();
+    }
+    e.stopPropagation()
 }
 
-// Evento para borrar un elemento del carrito
+const setCarrito = item => {
+    // console.log(item)
+    const producto = {
+        title: item.querySelector('h5').textContent,
+        precio: item.querySelector('p').textContent,
+        id: item.querySelector('button').dataset.id,
+        cantidad: 1
+    }
+    // console.log(producto)
+    if (carrito.hasOwnProperty(producto.id)) {
+        producto.cantidad = carrito[producto.id].cantidad + 1
+    }
 
-function borrarItemCarrito(producto) {
-    // Se obtiene el producto ID que hay en el boton pulsado
-    const id = producto.target.dataset.item;
-    // Borramos todos los productos
-    carrito = carrito.filter((carritoId) => {
-        return carritoId !== id;
-    });
-    // volvemos a renderizar
-    renderizarCarrito();
-    // Actualizamos el LocalStorage
-    guardarCarritoEnLocalStorage();
+    carrito[producto.id] = { ...producto }
 
+    pintarCarrito()
 }
 
-// En esta funcion se calcula el precio total, contando los productos repetidos
+const pintarCarrito = () => {
+    items.innerHTML = ''
 
-function calcularTotal() {
-    // Aca recorre el array del carrito
-    return carrito.reduce((total, item) => {
-        // Se pone el precio de cada elemento
-        const miItem = baseDeDatosProductos.filter((itemBaseDatosProductos) => {
-            return itemBaseDatosProductos.id === parseInt(item);
-        });
-        // Se suman al total
-        return total + miItem[0].precio;
-    }, 0).toFixed(2);
+    Object.values(carrito).forEach(producto => {
+        templateCarrito.querySelector('th').textContent = producto.id
+        templateCarrito.querySelectorAll('td')[0].textContent = producto.title
+        templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad
+        templateCarrito.querySelector('span').textContent = producto.precio * producto.cantidad
+
+        //botones
+        templateCarrito.querySelector('.btn-info').dataset.id = producto.id
+        templateCarrito.querySelector('.btn-danger').dataset.id = producto.id
+
+        const clone = templateCarrito.cloneNode(true)
+        fragment.appendChild(clone)
+    })
+    items.appendChild(fragment)
+
+    pintarFooter()
+
+    localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
-// Vacia el carrito y lo vuelve a renderiza
 function vaciarCarrito() {
 
     Swal.fire({
@@ -246,120 +129,173 @@ function vaciarCarrito() {
         if (result.isConfirmed) {
             Swal.fire('Carrito vaciado', '', 'success')
             // Se limpian los productos guardados
-            carrito = [];
+            carrito = {};
             // Aca se renderiza de nuevo
-            renderizarCarrito();
+            pintarCarrito()
             // Borra LocalStorage
             localStorage.clear();
         } else if (result.isDenied) {
             Swal.fire('Carrito sin modificaciones', '', 'error')
             // Aca se renderiza de nuevo
-            renderizarCarrito();
+            pintarCarrito()
         }
     })
 }
 
-// Se guarda el carrito en el LocalStorage
-function guardarCarritoEnLocalStorage() {
-    miLocalStorage.setItem('carrito', JSON.stringify(carrito));
-}
+const pintarFooter = () => {
+    footer.innerHTML = ''
 
-function cargarCarritoDeLocalStorage() {
-    // Ver si existe un carrito ya guardado en el localStorage
-    if (miLocalStorage.getItem('carrito') !== null) {
-        // Carga la información
-        carrito = JSON.parse(miLocalStorage.getItem('carrito'));
+    if (Object.keys(carrito).length === 0) {
+        footer.innerHTML = `
+        <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+        `
+        return
     }
-}
 
-// Eventos
-flowBotonVaciar.addEventListener('click', vaciarCarrito);
+    // sumar cantidad y sumar totales
+    const nCantidad = Object.values(carrito).reduce((acc, { cantidad }) => acc + cantidad, 0)
+    const nPrecio = Object.values(carrito).reduce((acc, { cantidad, precio }) => acc + cantidad * precio, 0)
+    // console.log(nPrecio)
 
-flowBotonComprar.addEventListener('click', () => {
+    templateFooter.querySelectorAll('td')[0].textContent = nCantidad
+    templateFooter.querySelector('span').textContent = nPrecio
 
-    Swal.fire({
-        title: '¿Tienes una cuenta creada?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Si',
-        denyButtonText: 'No',
-        customClass: {
-            actions: 'my-actions',
-            cancelButton: 'order-1 right-gap',
-            confirmButton: 'order-2',
-            denyButton: 'order-3',
-        },
-        allowOutsideClick: () => {
-            const popup = Swal.getPopup()
-            popup.classList.remove('swal2-show')
-            setTimeout(() => {
-                popup.classList.add('animate__animated', 'animate__headShake')
-            })
-            setTimeout(() => {
-                popup.classList.remove('animate__animated', 'animate__headShake')
-            }, 500)
-            return false
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Perfecto, ingresa tu cuenta',
-                html: `<input type="text" id="login" class="swal2-input" placeholder="Correo Electronico">
-                <input type="password" id="password" class="swal2-input" placeholder="Contraseña">`,
-                confirmButtonText: 'Sign in',
-                focusConfirm: false,
-                customClass: "Login",
-                preConfirm: () => {
-                    const login = Swal.getPopup().querySelector('#login').value
-                    const password = Swal.getPopup().querySelector('#password').value
-                    if (!login || !password) {
-                        Swal.showValidationMessage(`Please enter login and password`)
+    const clone = templateFooter.cloneNode(true)
+    fragment.appendChild(clone)
+
+    footer.appendChild(fragment)
+
+    const boton = document.querySelector('#vaciar-carrito')
+    boton.addEventListener('click', vaciarCarrito);
+
+    const botonComprar = document.querySelector('#comprar-carrito')
+    botonComprar.addEventListener('click', () => {
+
+        Swal.fire({
+            title: '¿Tienes una cuenta creada?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            denyButtonText: 'No',
+            customClass: {
+                actions: 'my-actions',
+                cancelButton: 'order-1 right-gap',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+            },
+            allowOutsideClick: () => {
+                const popup = Swal.getPopup()
+                popup.classList.remove('swal2-show')
+                setTimeout(() => {
+                    popup.classList.add('animate__animated', 'animate__headShake')
+                })
+                setTimeout(() => {
+                    popup.classList.remove('animate__animated', 'animate__headShake')
+                }, 500)
+                return false
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Perfecto, ingresa tu cuenta',
+                    html: `<input type="text" id="login" class="swal2-input" placeholder="Correo Electronico">
+                    <input type="password" id="password" class="swal2-input" placeholder="Contraseña">`,
+                    confirmButtonText: 'Sign in',
+                    focusConfirm: false,
+                    customClass: "Login",
+                    preConfirm: () => {
+                        const login = Swal.getPopup().querySelector('#login').value
+                        const password = Swal.getPopup().querySelector('#password').value
+                        if (!login || !password) {
+                            Swal.showValidationMessage(`Please enter login and password`)
+                        }
+                        return { login: login, password: password }
+                    },
+                    allowOutsideClick: () => {
+                        const popup = Swal.getPopup()
+                        popup.classList.remove('swal2-show')
+                        setTimeout(() => {
+                            popup.classList.add('animate__animated', 'animate__headShake')
+                        })
+                        setTimeout(() => {
+                            popup.classList.remove('animate__animated', 'animate__headShake')
+                        }, 500)
+                        return false
                     }
-                    return { login: login, password: password }
-                },
-                allowOutsideClick: () => {
-                    const popup = Swal.getPopup()
-                    popup.classList.remove('swal2-show')
-                    setTimeout(() => {
-                        popup.classList.add('animate__animated', 'animate__headShake')
-                    })
-                    setTimeout(() => {
-                        popup.classList.remove('animate__animated', 'animate__headShake')
-                    }, 500)
-                    return false
-                }
-            }).then((result) => {
-                Swal.fire(`
-                Login: ${result.value.login}
-                Password: ${result.value.password}
-                `.trim())
-            })
-        } else if (result.isDenied) {
-            Swal.fire({
-                title: 'Create Una',
-                icon: 'warning',
-                confirmButtonText: '<a class="sweetLogin" style="color: white" href="./login.html"> Alla voy! </a>',
-                allowOutsideClick: () => {
-                    const popup = Swal.getPopup()
-                    popup.classList.remove('swal2-show')
-                    setTimeout(() => {
-                        popup.classList.add('animate__animated', 'animate__headShake')
-                    })
-                    setTimeout(() => {
-                        popup.classList.remove('animate__animated', 'animate__headShake')
-                    }, 500)
-                    return false
-                }
-            })
-        }
+                }).then((result) => {
+                    Swal.fire(`
+                    Login: ${result.value.login}
+                    Password: ${result.value.password}
+                    `.trim())
+                })
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: 'Create Una',
+                    icon: 'warning',
+                    confirmButtonText: '<a class="sweetLogin" style="color: white" href="./login.html"> Alla voy! </a>',
+                    allowOutsideClick: () => {
+                        const popup = Swal.getPopup()
+                        popup.classList.remove('swal2-show')
+                        setTimeout(() => {
+                            popup.classList.add('animate__animated', 'animate__headShake')
+                        })
+                        setTimeout(() => {
+                            popup.classList.remove('animate__animated', 'animate__headShake')
+                        }, 500)
+                        return false
+                    }
+                })
+            }
+        })
+    
     })
 
-})
+}
 
-// Inicio
-cargarCarritoDeLocalStorage();
-renderizarProductos();
-renderizarCarrito();
+const btnAumentarDisminuir = e => {
+    // console.log(e.target.classList.contains('btn-info'))
+    if (e.target.classList.contains('btn-info')) {
+        const producto = carrito[e.target.dataset.id]
+        producto.cantidad++
+        carrito[e.target.dataset.id] = { ...producto }
+        Toastify({
+            text: "Sumaste una unidad de " + producto.title,
+            duration: 800,
+            style: {
+                background: "#46A2FD",
+                color: "white",
+            }
+        }).showToast();
+        pintarCarrito()
+    }
 
-// Fin la seccion del carrito
+    if (e.target.classList.contains('btn-danger')) {
+        const producto = carrito[e.target.dataset.id]
+        producto.cantidad--
+        if (producto.cantidad === 0) {
+            delete carrito[e.target.dataset.id]
+            Toastify({
+                text: "Eliminaste " + producto.title + " del carrito",
+                duration: 800,
+                style: {
+                    background: "black",
+                    color: "white",
+                }
+            }).showToast();
+        } else {
+            carrito[e.target.dataset.id] = { ...producto }
+            Toastify({
+                text: "Restaste una unidad de " + producto.title,
+                duration: 800,
+                style: {
+                    background: "#dc3545",
+                    color: "white",
+                }
+            }).showToast();
+        }
+        pintarCarrito()
+    }
+
+    e.stopPropagation()
+}

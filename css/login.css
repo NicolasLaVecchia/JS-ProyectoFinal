@@ -75,7 +75,7 @@ main{
 
 .caja__trasera button:hover{
     background: #fff;
-    color: #46A2FD;
+    color: hsl(9, 100%, 82%);
 }
 
 /*Formularios*/
@@ -108,7 +108,7 @@ main{
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
-    color: #46A2FD;
+    color: hsl(9, 100%, 82%);
 }
 
 .contenedor__login-register form input{
@@ -126,7 +126,7 @@ main{
     margin-top: 40px;
     border: none;
     font-size: 14px;
-    background: #46A2FD;
+    background: hsl(9, 100%, 82%);
     font-weight: 600;
     cursor: pointer;
     color: white;
