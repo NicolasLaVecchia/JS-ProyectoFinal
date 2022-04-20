@@ -15,7 +15,7 @@
         "id": 3,
         "title": "World Cup-20cm",
         "precio": 2750,
-        "thumbnail": "../Images/copaDelMundo.jpg"
+        "thumbnail": "../Images/CopaDelMundo.jpg"
     },
     {
         "id": 4,
@@ -51,7 +51,7 @@
         "id": 9,
         "title": "Grinder Minecraft",
         "precio": 2500,
-        "thumbnail": "../Images/grinderMinecraft2.jpg"
+        "thumbnail": "../Images/GrinderMinecraft2.jpg"
     },
     {
         "id": 10,
