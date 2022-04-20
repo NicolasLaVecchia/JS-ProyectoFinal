@@ -1,0 +1,183 @@
+/* INICIO MAIN */
+.main{
+    width: auto;
+    height: auto;
+    & .jumbotron{
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), whitesmoke),
+            url("../Images/empresa1.jpg");
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        margin-top: 10vh;
+        border-radius: 0;
+        color: whitesmoke;
+        height: 100vh;
+        & h1{
+            font-family: $fuentePrincipal;
+            margin-bottom: 5%;
+            text-shadow: 2px 2px 2px black;
+            font-size: 4vmax;
+        }
+        & h2{
+            font-family: $fuentePrincipal;
+            margin-bottom: 5%;
+            text-shadow: 2px 2px 2px black;
+            font-size: 3vmax;
+        }
+        & p{
+            font-family: $fuenteTerciaria;
+            text-shadow: 2px 2px 2px black;
+            font-style: oblique; 
+            font-size: 2vmax;
+        }
+    }
+
+    & .btn-flecha {
+        position: fixed;
+        opacity: 0.5;
+        width: 1.875rem;
+        height: 1.875rem;
+        line-height: 30px;
+        bottom: 1.875rem;
+        right: 1.875rem;
+        background-color: $colorTerceario;
+        color: whitesmoke;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 0.938rem;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+        z-index: 40;
+        transition: 800ms;
+        &:hover {
+            text-decoration: none;
+            background-color: whitesmoke;
+            color: $colorTerceario;
+            transform: rotate(360deg);
+        }
+    }
+
+    & .card{
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        width: 100%;
+        background-color: transparent;
+        border: transparent;
+        & .card-img-top{
+            width: 50%;
+            transition: 0.5s opacity;
+            &:hover{
+                opacity: 0.9;
+            }
+        }
+        & .card-header{
+            color: black;
+            font-family: $fuenteTerciaria;
+            font-weight: bold;
+            font-size: 4vmax;
+            background-color: transparent;
+        }
+        & .card-body{
+            & .card-title{
+                color: whitesmoke;
+                font-family: $fuenteSecundaria;
+                font-weight: bold;
+                animation: titulo1 infinite 5s;
+            }
+            & .card-text{
+                color: $colorTerceario;
+                font-family: $fuenteSecundaria;
+                & span{
+                    color: $colorSecundario;
+                    animation: titulo1 infinite 5s;
+                }
+            }
+            & .btn-light{
+                transition: 500ms;
+                background-color: $colorPrincipal;
+                color: whitesmoke;
+                &:hover{
+                    background-color: $colorSecundario;
+                    color: whitesmoke;
+                    transform: scale(1.1);
+                }
+            }
+        }
+        @keyframes titulo1{
+            0%{
+                color: $colorPrincipal;
+            }
+            50%{
+                color: $colorSecundario;
+            }
+            100%{
+                color: $colorPrincipal;
+            }
+        }
+    }
+
+    & .skills{
+        padding: 60px 0;
+        overflow: hidden;
+        & .section-title{
+            text-align: center;
+            padding-bottom: 30px;
+            & h2{
+                font-family: $fuenteTerciaria;
+                font-size: 3rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+                background: #777484;
+                color: whitesmoke;
+            }
+            & h5{
+                margin-bottom: 0;
+                font-family: $fuenteSecundaria;
+                color: $colorTerceario;
+            }
+        }
+        & .skills-content{
+            display: flex;
+            flex-wrap: wrap;
+            & .porcentaje{
+                & .progress{
+                    height: 60px;
+                    display: block;
+                    background: none;
+                    border-radius: 0;
+                    & .skill{
+                        padding: 15px 0;
+                        margin: 0;
+                        text-transform: uppercase;
+                        display: block;
+                        font-weight: 600;
+                        font-family: $fuenteTerciaria;
+                        color: $colorTerceario;
+                        & .val{
+                            float: right;
+                            font-style: normal;
+                        }
+                    }
+                    & .progress-bar-wrap{
+                        background: #ffe3df;
+                        box-shadow: 2px 2px 5px #777484;
+                        & .progress-bar{
+                            height: 10px;
+                            background-color: $colorPrincipal;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .division{
+        width: auto;
+        height: 100%;
+        & img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+}

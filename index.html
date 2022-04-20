@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- cdn bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- cdn bootstrap -->
+    <!-- meta description -->
+    <meta name="description" content="El diseño puede observarse en todos lados, puede ser funcional, técnico, visual, abstracto o meramente pasional. Aquí vamos a darle forma a eso que imaginas y no podes llevar a cabo. Asesoramientos, personalizaciones, estandarizaciones, producción min/max, whatever.">
+    <!-- meta description -->
+
+    <!-- meta keywords -->
+    <meta name="keywords" content="Impresion 3d, proyectos, insumos, servicios, diseño, diseño técnico, contenido visual, rendering, animación, diseño digital, escultura digital, programación, ideas, producción, personalización, estrategias, metas, objetivos, seguimiento, edición, creación, diseño 2d">
+    <!-- meta keywords -->
+
+    <!-- cnd bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!-- cnd bootstrap -->
 
     <!-- cnd font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- cnd font awesome -->
 
-    <!-- titulo -->
-    <title>Proyecto JS</title>
-    <!-- titulo -->
+    <!-- Archivo de estilos -->
+    <link rel="stylesheet" href="./ScssIndex/index.css">
+    <!-- Archivo de estilos -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./Images/3DFaviconPlus.png">
+    <!-- Favicon -->
+
+    <!-- Titulo -->
+    <title> Flow 3D Estudio - Llevando lo abstracto a lo material</title>
+    <!-- Titulo -->
+
+    <!-- eliminar marca de agua de webhost -->
+
+    <!-- eliminar marca de agua de webhost -->
 
 </head>
 
+<!-- inicio vista -->
 <body>
 
-    <header>
+    <!-- inicio header -->
+
+    <header class="container-fluid row header" id="header">
 
         <!-- inicio navbar -->
         <nav class="navbar col-12 navbar-expand-lg fixed-top navbar-light bg-light">
-            <a class="navbar-brand" href="#header"> <img src="./img/FlowNegro.png" alt="logo empresa" width="150"></a>
+            <a class="navbar-brand" href="./index.html"> <img src="./Images/FlowNegro.png" alt="Logo de la Empresa" width="150"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +68,7 @@
                         <a class="nav-link" id="nosotros" href="#empresa"> <i class="fa-solid fa-building"></i> Empresa <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" id="contact" href="#contacto"> <i class="far fa-star"></i> Contacto <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" id="contact" href="./Pages/contacto.html"> <i class="far fa-star"></i> Contacto <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -64,16 +83,376 @@
         </nav>
         <!-- fin navbar -->
 
-    </header>
+        <!-- boton whatsapp -->
+        <a class="whatsapp" href="https://wa.me/+5492215992999?text=Hola,%20me%20interesa%20cotizar%20un%20proyecto.%20Escribime" target="_blank"> 
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- boton whatsapp -->
 
-    <main>
+    </header>
+    <!-- fin header -->
+
+    <!-- inicio main -->
+    <main class="main">
+
+        <!-- inicio jumbotron -->
+        <section class="jumbotronHome col-12">
+            <div class="overlay"></div>
+            <div id="videoArea">
+                <video class="jumbotron-1" loop="" preload="auto" autoplay="" muted="" playsinline="">
+                    <source class="video" src="./Videos/Impresion3d.mp4" type="video/webm; codecs=" alt="video publicitario">
+                </video>
+            </div>
+            <div class="container">
+                <div class="text">
+                    <h1 class="display-4 col-12">Hacemos realidad tus ideas <i class="far fa-lightbulb"></i></h1>
+                    <h4 class="col-12 text-center">El diseño no es solo como se ve y se siente. Sino también como funciona - S. Jobs</h4>
+                    <a class="col-xs-3 col-md-4 col-lg-2 btn btn-lg" href="./Pages/contacto.html" role="button">Contáctanos!</a>
+                </div>
+        </section>
+        <!-- fin jumbotron -->
+    
+        <!-- inicio division -->
+        <div class="division">
+            <img src="./Images/divisionPages.jpg" alt="División de Pagina">
+        </div> 
+        <!-- fin division -->
+
+        <!-- boton volver header -->
+        <a class="btn-flecha" href="#header"> 
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <!-- boton volver header -->
+        
+
+        <!-- inicio portfolio -->
+        <div class="container portfolio" id="portfolio">
+
+            <div class="row fila-1 align-items-center">
+        
+                <div class="p-left xs-col-12 col-md-6 text-center">
+                    <h2 class="titulo--h2">PROYECTOS</h2>
+                    <h4>Un proyecto no solo se basa en el producto, sino que requiere un <span>análisis, pruebas, mejoras, adaptaciones.</span> Intentar e intentar hasta encontrar el punto justo en el diseño que conlleve técnica, funcionalidad y por su puesto ergonomía. Vamos a <span>planificar</span> a través de varios objetivos, feedbacks, mucha coordinación y paciencia.</h4>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
+                    <div class="boton-mas">
+                        <a class="btn btn-lg" href="./Pages/trabajos.html" role="button">Ver más</a>
+                    </div>
+                </div>
+                <!-- fin div1 -->
+            
+                <!-- inicio div2 -->
+                <div class="p-right col-md-6">
+                    <div id="carousel1" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./Images/Deadpool1.jpg" class="d-block w-100 rounded" alt="Foto Busto Deadpool">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/Copas1.jpg" class="d-block w-100 rounded" alt="Replica de Copas">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/MacetaCarita1.jpg" class="d-block w-100 rounded" alt="Maceta Cara Sonriente">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/GrinderMinecraft.jpg" class="d-block w-100 rounded" alt="Grinder Minecraft">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-target="#carousel1" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#carousel1" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- fin div2 -->
+            
+            </div>    
+
+        </div>
+        <!-- fin portfolio -->
+        
+        <!-- inicio division -->
+        <div class="division">
+            <img src="./Images/division2Pages.jpg" alt="División de Pagina">
+        </div>
+        <!-- fin division -->
+        
+        <!-- inicio servicios -->
+        <div class="container servicios" id="servicios">
+
+            <div class="row fila-2 align-items-center">
+        
+                <!-- inicio div1 -->
+                <div class="s-left col-md-6 text-center">
+                    <h2 class="titulo2--h2">QUE OFRECEMOS</h2>
+                    <h3 class="titulo--medida1">- Seguimiento Completo -</h3>
+                    <h3 class="titulo--medida2">- Producción -</h3>
+                    <h3 class="titulo--medida3">- Diseño -</h3>
+                    <h3 class="titulo--medida4">- Animación -</h3>
+                    <h3 class="titulo--medida5">- Estrategias -</h3>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
+                    <div class="boton-mas">
+                        <a class="btn btn-lg" href="./Pages/servicios.html" role="button">Ver más</a>
+                    </div>
+                </div>
+                <!-- fin div1 -->
+            
+                <!-- inicio div2 -->
+                <div class="s-right col-md-6">
+                    <div id="carousel2" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel2" data-slide-to="1" class="active"></li>
+                            <li data-target="#carousel2" data-slide-to="2" class="active"></li>
+                            <li data-target="#carousel2" data-slide-to="3" class="active"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./Images/Impresora3d.jpg" class="d-block w-100" alt="Impresora 3D">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Impresión 3D</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/Rendering1.png" class="d-block w-100" alt="Render de un Ambiente">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Rendering</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/identidad-corporativa-esquema.jpg" class="d-block w-100" alt="Identidad de Marca">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Identidad De Marca</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/Diseño3d.png" class="d-block w-100" alt="Diseño 3D">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Diseño 3D</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-target="#carousel2" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#carousel2" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- fin div2 -->
+            </div>    
+
+        </div>
+        <!-- fin servicios -->
+        
+        <!-- inicio division -->
+        <div class="division">
+            <img src="./Images/division3Pages.jpg" alt="División de Pagina">
+        </div>
+        <!-- fin division -->
+        
+        <!-- inicio nosotros -->
+        <div class="container empresa" id="empresa">
+
+            <div class="row fila-2 align-items-center">
+        
+                <!-- inicio div1 -->
+                <div class="e-left col-md-6 text-center">
+                    <h2 class="titulo3--h2">HACEMOS REALIDAD <span>TUS</span> IDEAS</h2>
+                    <h4>Somos un equipo de diseño joven que se dedica a realizar diversos productos y conceptos, entre los cuales
+                        están la impresión 3d, el renderizado de producto, animaciones, modelado digital, edición de fotos, creación
+                        de videos multimediales, etc.</h4>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
+                    <div class="boton-mas">
+                        <a class="btn btn-lg" href="./Pages/nosotros.html" role="button">Te invitamos a conocernos</a>
+                    </div>
+                </div>
+                <!-- fin div1 -->
+            
+                <!-- inicio div2 -->
+                <div class="e-right col-md-6">
+                    <div id="carousel3" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./Images/DesingThinking.png" class="d-block w-100" alt="Pensamiento de Diseño">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/branding1.png" class="d-block w-100" alt="Branding">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./Images/digitalizacion-de-empresas-featured.png" class="d-block w-100" alt="Digitalización">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-target="#carousel3" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#carousel3" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- fin div2 -->
+            </div>
+        </div>
+        <!-- fin nosotros -->
+        
+        <!-- inicio division -->
+        <div class="division">
+            <img src="./Images/division4Pages.jpg" alt="División de Pagina">
+        </div>
+        <!-- fin division -->
 
     </main>
+    <!-- fin main -->
+    
+    <!-- inicio footer -->
+    <footer class="footer font-small">
+    
+        <!-- footer arriba -->
+        <div class="color-fondo">
+            <div class="container">
+    
+                <!-- inicio fila -->
+                <div class="row py-4 d-flex align-items-center arriba">
+    
+                    <!-- columna de texto -->
+                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                        <h6 class="mb-0">Seguinos por las redes para ver nuestro contenido actualizado o informarnos por algún tipo de inconveniente</h6>
+                    </div>
+                    <!-- columna de texto -->
+    
+                    <!-- columna redes -->
+                    <div class="col-md-6 col-lg-7 text-center text-md-right d-flex justify-content-around">
+    
+                        <!-- Facebook -->
+                        <a class="fb-ic" href="https://www.facebook.com/nicolaslavecchia/" target="_blank">
+                            <i class="fab fa-facebook-f"> </i>
+                        </a>
+                        <!-- Whatsapp -->
+                        <a class="wsp-ic" href="https://wa.me/+5492215992999?text=Hola,%20me%20interesa%20cotizar%20un%20proyecto.%20Escribime" target="_blank"> 
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <!-- Cprreo -->
+                        <a class="correo-ic" href="https://mail.google.com/mail/u/0/#inbox?compose=jrjtXJTLZHrKGjSxqxMdqhCtGkXvNrCsLbgLrRPFgLvpTqdDRmcKLsFXBRHnvqQHRrfKDRJF" target="_black"> 
+                            <i class="far fa-envelope"></i> 
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic" href="https://www.linkedin.com/in/nicolas-la-vecchia-b9b72a141/" target="_black">
+                            <i class="fab fa-linkedin-in"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic" href="https://www.instagram.com/flow_3di/" target="_blank"> 
+                            <i class="fab fa-instagram"></i> 
+                        </a>
+                        <!-- Cults -->
+                        <a class="cults-ic" href="https://cults3d.com/es/usuarios/flow_3di" target="_blank"> 
+                            <i class="fas fa-dice-d20"></i> 
+                        </a>
 
-    <footer>
-
+                    </div>
+                    <!-- columna redes -->
+    
+                </div>
+                <!-- fin fila -->
+    
+            </div>
+        </div>
+        <!-- footer arriba -->
+    
+        <!-- footer medio -->
+        <div class="container text-center text-md-left mt-5 medio">
+    
+            <!-- inicio fila -->
+            <div class="row mt-3">
+    
+                <!-- columna 1 -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    
+                    <a class="col-xs-8 d-block imagen-logo" href="#header"> <img src="./Images/FlowLOGOaColor.png" alt="Logo" width="150"></a>
+                    <h6 class="p-footer"> Desde nuestra empresa creemos que el diseño es parte del todo, ayuda y mejora la vida de las personas.</h6>
+    
+                </div>
+                <!-- columna 1 -->
+    
+                <!-- columna 2 -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+    
+                    <h6 class="text-uppercase font-weight-bold">Links del Sitio</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a class="link-footer" href="./Pages/trabajos.html">Portfolio</a>
+                    </p>
+                    <p>
+                        <a class="link-footer" href="./Pages/servicios.html">Servicios</a>
+                    </p>
+                    <p>
+                        <a class="link-footer" href="./Pages/nosotros.html">Empresa</a>
+                    </p>
+                    <p>
+                        <a class="link-footer" href="./Pages/contacto.html">Contacto</a>
+                    </p>
+    
+                </div>
+                <!-- columna 2 -->
+    
+                <!-- columna 3 -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+    
+                    <h6 class="text-uppercase font-weight-bold">Información Útil</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fas fa-home mr-3"></i> La Plata, Buenos Aires, Arg
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> nicolaslavecchia@hotmail.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> +54 9 221 599 2999
+                    </p>
+                    <p>
+                        <i class="fab fa-instagram mr-3"></i> @flow_3di
+                    </p>
+    
+                </div>
+                <!-- columna 3 -->
+    
+            </div>
+            <!-- fin fila -->
+    
+        </div>
+        <!-- footer medio -->
+    
+        <!-- footer abajo -->
+        <div class="footer-copyright text-center py-3 abajo abajo">
+            © 2022
+            <a class="col-xs-8" href="#header"> <img src="./Images/FlowBlanco.png" alt="Logo" width="80"></a>
+            all right reserved.
+        </div>
+        <!-- footer abajo -->
+    
     </footer>
+    <!-- fin footer -->
 
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- Scripts -->
 </body>
-
 </html>
+

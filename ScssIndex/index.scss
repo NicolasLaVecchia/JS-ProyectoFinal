@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=PT+Sans:ital@1&family=Roboto:wght@300&display=swap');
+/* 
+    font-family: 'Cormorant Garamond', serif;
+
+    font-family: 'PT Sans', sans-serif;
+
+    font-family: 'Roboto', sans-serif;
+*/
+
+@import "variables";
+
+/* reseteo */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/* desplazamiento onepage*/
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #f5f5f5;
+    background: url(../Images/triangulos1.svg)
+}
+
+@import "header";
+
+@import "main";
+
+@import "footer";

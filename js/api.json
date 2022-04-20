@@ -3,73 +3,73 @@
         "id": 1,
         "title": "Señalador MrDarcy",
         "precio": 150,
-        "thumbnail": "../img/mrdarcy.jpg"
+        "thumbnail": "../Images/mrdarcy.jpg"
     },
     {
         "id": 2,
         "title": "Señalador Elizabeth",
         "precio": 150,
-        "thumbnail": "../img/elizabeth.jpg"
+        "thumbnail": "../Images/elizabeth.jpg"
     },
     {
         "id": 3,
         "title": "World Cup-20cm",
         "precio": 2750,
-        "thumbnail": "../img/copaDelMundo.jpg"
+        "thumbnail": "../Images/copaDelMundo.jpg"
     },
     {
         "id": 4,
         "title": "Libertadores-20cm",
         "precio": 2100,
-        "thumbnail": "../img/libertadores.jpg"
+        "thumbnail": "../Images/libertadores.jpg"
     },
     {
         "id": 5,
         "title": "Lib. Boca-20cm",
         "precio": 2500,
-        "thumbnail": "../img/libertadoresBoca.jpg"
+        "thumbnail": "../Images/libertadoresBoca.jpg"
     },
     {
         "id": 6,
         "title": "BustoDeadPool-15cm",
         "precio": 3900,
-        "thumbnail": "../img/bustoDeadpool.jpg"
+        "thumbnail": "../Images/bustoDeadpool.jpg"
     },
     {
         "id": 7,
         "title": "FiguraExpo #1 -10cm",
         "precio": 420,
-        "thumbnail": "../img/figura1.jpg"
+        "thumbnail": "../Images/figura1.jpg"
     },
     {
         "id": 8,
         "title": "FiguraExpo #2 -10cm",
         "precio": 410,
-        "thumbnail": "../img/figura2.jpg"
+        "thumbnail": "../Images/figura2.jpg"
     },
     {
         "id": 9,
         "title": "Grinder Minecraft",
         "precio": 2500,
-        "thumbnail": "../img/grinderMinecraft.jpg"
+        "thumbnail": "../Images/grinderMinecraft2.jpg"
     },
     {
         "id": 10,
         "title": "Lapicero David - 10cm",
         "precio": 1600,
-        "thumbnail": "../img/lapiceroDavid.jpg"
+        "thumbnail": "../Images/lapiceroDavid.jpg"
     },
     {
         "id": 11,
         "title": "Maceta Groot - 15cm",
         "precio": 2800,
-        "thumbnail": "../img/macetaGroot.jpg"
+        "thumbnail": "../Images/macetaGroot.jpg"
     },
     {
         "id": 12,
         "title": "Maceta Sonriente - 10cm",
         "precio": 2700,
-        "thumbnail": "../img/macetaCarita.jpg"
+        "thumbnail": "../Images/macetaCarita.jpg"
     }
 
 ]

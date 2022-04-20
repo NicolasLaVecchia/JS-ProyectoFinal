@@ -1,0 +1,62 @@
+/* INICIO HEADER */
+/* inicio navbar */
+.navbar{
+    background-color: $colorPrincipal !important;
+    box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.5);
+    & .navbar-brand{
+        & img{
+            transition: 500ms;
+            &:hover{
+                transform: scale(0.9);    
+            }    
+        }
+    }
+    & .navbar-toggler{
+        background-color: whitesmoke;
+    }
+    & .navbar-collapse{
+        & .navbar-nav{
+            & .nav-item{
+                margin-right: 2rem;
+                & .nav-link{
+                    color:black !important;
+                    transition: 800ms;
+                    &:hover{
+                        color:#f5f5f5 !important;
+                    }
+                    & i{
+                        transition: 800ms;
+                        &:hover{
+                            transform: rotate(360deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* fin navbar */
+
+.whatsapp{
+    position: fixed;
+    width: 3.438rem;
+    height: 3.438rem;
+    line-height: 55px;
+    bottom: 3.125rem;
+    left: 1.875rem;
+    background-color: #00bb2d;
+    color: whitesmoke;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 1.875rem;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    z-index: 51;
+    transition: 800ms;
+    &:hover{
+        text-decoration: none;
+        background-color: whitesmoke;
+        color: #00bb2d;
+    }
+}
+
+/* FIN HEADER */

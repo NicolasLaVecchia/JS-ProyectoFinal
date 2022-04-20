@@ -1,0 +1,104 @@
+/* INICIO MAIN */
+.main{
+    width: auto;
+    height: auto;
+
+    & .jumbotron-3{
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), whitesmoke), url("../Images/servicesfondo.jpg");
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        margin-top: 10vh;
+        border-radius: 0;
+        color: whitesmoke;
+        height: 100vh;
+        z-index: 50;
+        & h1{
+            font-family: $fuentePrincipal;
+            margin-bottom: 2%;
+            text-shadow: 2px 2px 2px black;
+            font-size: 4vmax;
+            padding-top: 8vh;
+        }
+        & h2{
+            font-family: $fuentePrincipal;
+            margin-bottom: 2%;
+            text-shadow: 2px 2px 2px black;
+        }
+        & p{
+            font-family: $fuenteTerciaria;
+            text-shadow: 2px 2px 2px black;
+            font-style: oblique; 
+            font-size: 2vmax;
+        }
+    }
+
+    & .btn-flecha {
+        position: fixed;
+        opacity: 0.5;
+        width: 1.875rem;
+        height: 1.875rem;
+        line-height: 30px;
+        bottom: 1.875rem;
+        right: 1.875rem;
+        background-color: $colorTerceario;
+        color: whitesmoke;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 0.938rem;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+        z-index: 40;
+        transition: 800ms;
+        &:hover {
+            text-decoration: none;
+            background-color: whitesmoke;
+            color: $colorTerceario;
+            transform: rotate(360deg);
+        }
+    }
+
+    & .left1{
+        & h2{
+            font-family: $fuenteTerciaria;
+            font-size: 4vmax;
+            font-weight: bold;
+            font-style: oblique;
+            transition: 500ms;
+            color: $colorSecundario;
+            padding: 2vh 0vw 2vh 0vw;
+            & span{
+                color:$colorTerceario;
+                transition: 700ms;
+                &:hover{
+                    color:$colorSecundario;
+                }
+            }
+        }
+
+        & .carousel{
+            & .carousel-inner{
+                & .carousel-item{
+                    & .carousel-caption{
+                        & h5{
+                            font-family: $fuenteTerciaria;
+                            text-shadow: 0 0 3px black;
+                            font-size: 2vmax;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .division{
+        width: auto;
+        height: 100%;
+        & img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+}
+/* fin MAIN */
